@@ -12,7 +12,7 @@ public class CameraController : MonoBehaviour {
 	
 	void Start()
 	{
-		// Set the initial camera positioning to prevent any weird jerking around
+		// Set the initial camera positioning to prevent any weird jerking around 1234abc
 		Vector3 playerPos = playerObject.transform.position;
 		Vector3 cameraPos = transform.position;
 		Vector3 startTargPos = playerPos;

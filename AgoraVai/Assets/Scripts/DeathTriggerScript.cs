@@ -14,7 +14,7 @@ public class DeathTriggerScript : MonoBehaviour {
 	void OnTriggerEnter2D( Collider2D collidedObject )
 	{   
 
-		//collidedObject.SendMessage("hitDeathTrigger", SendMessageOptions.DontRequireReceiver);
+		//collidedObject.SendMessage("hitDeathTrigger", SendMessageOptions.DontRequireReceiver); 
 
 		if (collidedObject.tag == "Player") {
 
