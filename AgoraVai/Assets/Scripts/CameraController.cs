@@ -17,7 +17,7 @@ public class CameraController : MonoBehaviour {
 		Vector3 cameraPos = transform.position;
 		Vector3 startTargPos = playerPos;
 		
-		// Set the Z to the same as the camera so it does not move
+		// Set the Z to the same as the camera so it does not move ...
 		startTargPos.z = cameraPos.z;
 		lastTargetPosition = startTargPos;
 		currTargetPosition = startTargPos;
