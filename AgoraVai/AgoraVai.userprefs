@@ -1,0 +1,15 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace />
+  <MonoDevelop.Ide.Workbench ActiveDocument="..\PixelBro\Assets\Scripts\PlayerStateListener.cs">
+    <Files>
+      <File FileName="..\PixelBro\Assets\Scripts\PlayerStateController.cs" Line="27" Column="5" />
+      <File FileName="..\PixelBro\Assets\Scripts\PlayerStateListener.cs" Line="256" Column="5" />
+      <File FileName="..\PixelBro\Assets\Scripts\PlayerColliderListener.cs" Line="10" Column="18" />
+      <File FileName="..\PixelBro\Assets\Scripts\PlayerBulletController.cs" Line="42" Column="24" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
