@@ -46,6 +46,11 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\Delegate3.cs" />
+     <Compile Include="Assets\Scripts\Delegates.cs" />
+     <Compile Include="Assets\Scripts\Delegates2.cs" />
+     <Compile Include="Assets\Scripts\EventDelegate.cs" />
+     <Compile Include="Assets\Scripts\MessagingManager.cs" />
      <Compile Include="Assets\Scripts\PlayerBulletController.cs" />
      <Compile Include="Assets\Scripts\PlayerColliderListener.cs" />
      <Compile Include="Assets\Scripts\PlayerControl.cs" />

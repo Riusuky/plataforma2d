@@ -231,6 +231,8 @@ public class PlayerStateListener : MonoBehaviour {
 			break;
 			
 		case PlayerStateController.playerStates.firingWeapon:
+			playerAnimator.SetInteger("StatAnim", 2);
+
 			// Make the bullet object
 			GameObject newBullet = (GameObject)Instantiate(bulletPrefab);
 			
