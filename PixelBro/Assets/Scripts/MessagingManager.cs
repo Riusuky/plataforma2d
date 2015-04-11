@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEditor;
 using System.Collections.Generic;
 using System;
 
@@ -11,6 +12,7 @@ public class MessagingManager : MonoBehaviour {
 		get;
 		private set;
 	}
+
 
 
 	void Awake(){
