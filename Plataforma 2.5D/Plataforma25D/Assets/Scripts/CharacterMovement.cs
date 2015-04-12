@@ -23,11 +23,12 @@ public class CharacterMovement : MonoBehaviour {
 	void Awake(){
 		groundCheck = GameObject.Find ("GroundCheck").transform;
 		swordSpawn = GameObject.Find ("SwordSpawn").transform;
-
+		rigidbody = GetComponent<Rigidbody> ();
+		rigidbody.sleepThreshold = 0.0f;
 	}
 
 	void Start(){
-		rigidbody = GetComponent<Rigidbody> ();
+
 	}
 
 	// Use this for initialization

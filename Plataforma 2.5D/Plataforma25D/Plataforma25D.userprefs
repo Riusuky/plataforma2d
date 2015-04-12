@@ -1,15 +1,12 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\EventHandler.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\BossHealth.cs">
     <Files>
-      <File FileName="Plataforma25D.sln" Line="40" Column="9" />
-      <File FileName="Assets\Scripts\SwordDestruction.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\CharacterMovement.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\CharacterHealth.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\SmoothFollow.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\CheckPoint.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\BossController.cs" Line="42" Column="22" />
-      <File FileName="Assets\Scripts\EventHandler.cs" Line="26" Column="34" />
+      <File FileName="Assets\Scripts\BossHealth.cs" Line="8" Column="27" />
+      <File FileName="Assets\Scripts\BossController.cs" Line="52" Column="23" />
+      <File FileName="Assets\Scripts\DamagePlayer.cs" Line="27" Column="37" />
+      <File FileName="Assets\Scripts\CharacterMovement.cs" Line="27" Column="16" />
+      <File FileName="Assets\Scripts\CharacterHealth.cs" Line="47" Column="2" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
