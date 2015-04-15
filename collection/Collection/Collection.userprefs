@@ -1,14 +1,8 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Timer.cs">
+  <MonoDevelop.Ide.Workspace />
+  <MonoDevelop.Ide.Workbench ActiveDocument="..\..\RunnerGame\RunnerGame\Assets\Sprites\Scripts\levelCreator.cs">
     <Files>
-      <File FileName="Assets\Scripts\Coin.cs" Line="16" Column="26" />
-      <File FileName="Assets\Scripts\MainMenuManager.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\HUDManager.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\CoinCount.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\LiveCounter.cs" Line="6" Column="25" />
-      <File FileName="Assets\Scripts\Timer.cs" Line="20" Column="70" />
-      <File FileName="Assets\Scripts\GameState.cs" Line="19" Column="11" />
+      <File FileName="..\..\RunnerGame\RunnerGame\Assets\Sprites\Scripts\levelCreator.cs" Line="10" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
