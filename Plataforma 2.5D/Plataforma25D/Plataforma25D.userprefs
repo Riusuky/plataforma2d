@@ -1,6 +1,11 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench />
+  <MonoDevelop.Ide.Workbench ActiveDocument="..\..\PixelBroGame\New Unity Project\Assets\Scripts\PlayerStateListener.cs">
+    <Files>
+      <File FileName="..\..\PixelBroGame\New Unity Project\Assets\Scripts\PlayerStateListener.cs" Line="14" Column="29" />
+      <File FileName="..\..\PixelBroGame\New Unity Project\Assets\Scripts\PlayerStateController.cs" Line="35" Column="3" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
