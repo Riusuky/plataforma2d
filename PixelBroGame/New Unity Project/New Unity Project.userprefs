@@ -1,9 +1,10 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\PlayerStateController.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\PlayerStateListener.cs">
     <Files>
-      <File FileName="Assets\Scripts\PlayerStateListener.cs" Line="48" Column="8" />
-      <File FileName="Assets\Scripts\PlayerStateController.cs" Line="15" Column="13" />
+      <File FileName="Assets\Scripts\PlayerColliderListener.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\PlayerStateController.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\PlayerStateListener.cs" Line="192" Column="8" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

@@ -46,6 +46,7 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\PlayerColliderListener.cs" />
      <Compile Include="Assets\Scripts\PlayerStateController.cs" />
      <Compile Include="Assets\Scripts\PlayerStateListener.cs" />
  <Reference Include="UnityEngine.UI">
