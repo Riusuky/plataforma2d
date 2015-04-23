@@ -56,6 +56,14 @@ public class PlayerStateController : MonoBehaviour {
 				onStateChange(PlayerStateController.playerStates.jump);
 		}
 
+
+		float firing = Input.GetAxis("Fire1");
+		if(firing > 0.0f)
+		{
+			if(onStateChange != null)
+				onStateChange(PlayerStateController.playerStates.firingWeapon);
+		}
+
 	}
 
 }

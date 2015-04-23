@@ -6,9 +6,16 @@ public class PlayerStateListener : MonoBehaviour {
 	public float playerWalkSpeed = 3f;
 	private bool playerHasLanded = true;
 
+
+	//bullet
+	public GameObject bulletPrefab = null; 
+	public GameObject bulletInitPrefab = null; 
+	public Transform bulletSpawnTransform;
+
 	//JUMP
 	public float playerJumpForceVertical = 500f;
 	public float playerJumpForceHorizontal = 250f;
+	Vector3 localScale;
 
 	private Animator playerAnimator = null;
 	private Rigidbody2D rigidbody2D;
@@ -30,6 +37,7 @@ public class PlayerStateListener : MonoBehaviour {
 	void Awake () {
 		playerAnimator = GetComponent<Animator>();
 		rigidbody2D = GetComponent<Rigidbody2D> ();
+		 localScale = transform.localScale;		
 	}
 	
 	// Update is called once per frame
@@ -45,7 +53,7 @@ public class PlayerStateListener : MonoBehaviour {
 	void onStateCycle()
 	{
 
-		Vector3 localScale = transform.localScale;		
+
 		transform.localEulerAngles = Vector3.zero;
 
 		switch (currentState) {
@@ -74,6 +82,11 @@ public class PlayerStateListener : MonoBehaviour {
 					}
 					
 				break;
+
+			case PlayerStateController.playerStates.firingWeapon:
+
+				break;
+
 		}
 	}
 
@@ -88,9 +101,8 @@ public class PlayerStateListener : MonoBehaviour {
 		}
 			
 
-
-		if(newState == currentState)
-			return;
+		//if(newState == currentState)
+		//			return;
 
 		if(checkIfAbortOnStateCondition(newState))
 			return;
@@ -116,26 +128,25 @@ public class PlayerStateListener : MonoBehaviour {
 					playerAnimator.SetInteger("StatAnim", 1);
 				break;
 
-			case PlayerStateController.playerStates.jump:                   
+			case PlayerStateController.playerStates.jump: 
 				if(playerHasLanded)
 				{
+					playerAnimator.SetInteger("StatAnim", 2);
 					// Use the jumpDirection variable to specify if the player should be jumping left, right or vertical
-					float jumpDirection = 0.0f;
-					if(currentState == PlayerStateController.playerStates.left){
-						jumpDirection = -1.0f;
+					//float jumpDirection = 0.0f;
+					//if(currentState == PlayerStateController.playerStates.left){
+					//	jumpDirection = -1.0f;
 					    //rigidbody2D.velocity = new Vector2 (jumpDirection* playerWalkSpeed, rigidbody2D.velocity.y);
-
-
-					}else if(currentState == PlayerStateController.playerStates.right){
-						jumpDirection = 1.0f;
+					//}else if(currentState == PlayerStateController.playerStates.right){
+					//	jumpDirection = 1.0f;
 					    
-					}else{
-						jumpDirection = 0.0f;
-					}
+					//}else{
+					//	jumpDirection = 0.0f;
+					//}
 					
 					// Apply the actual jump force
-					rigidbody2D.AddForce(new Vector2(jumpDirection * playerJumpForceHorizontal, playerJumpForceVertical));
-					
+					//rigidbody2D.AddForce(new Vector2(jumpDirection * playerJumpForceHorizontal, playerJumpForceVertical));
+					rigidbody2D.AddForce(new Vector2(0, playerJumpForceVertical));								
 					playerHasLanded = false;
 					PlayerStateController.stateDelayTimer[ (int)PlayerStateController.playerStates.jump] = 0f;
 				}
@@ -146,6 +157,30 @@ public class PlayerStateListener : MonoBehaviour {
 				playerHasLanded = true;
 				PlayerStateController.stateDelayTimer[(int)PlayerStateController.playerStates.jump]= Time.time + 0.1f;
 			break;
+
+
+			case PlayerStateController.playerStates.firingWeapon:
+					// Make the bullet object
+					GameObject newBullet = (GameObject)Instantiate(bulletPrefab);
+					GameObject newBulletInit = (GameObject)Instantiate(bulletInitPrefab);
+					
+
+
+					// Setup the bullet’s starting position
+					newBullet.transform.position = bulletSpawnTransform.position;
+					newBulletInit.transform.position = bulletSpawnTransform.position;
+					
+
+					PlayerBulletController bullCon = newBullet.GetComponent<PlayerBulletController>();
+					// Set the player object
+					bullCon.playerObject = gameObject;	
+					// Launch the bullet!
+					bullCon.launchBullet();
+					// With the bullet made, set the state of the player back to the current state
+					onStateChange(currentState);
+					PlayerStateController.stateDelayTimer[(int)PlayerStateController.playerStates.firingWeapon] = Time.time + 0.25f;
+
+				break;
 
 
 
@@ -205,9 +240,16 @@ public class PlayerStateListener : MonoBehaviour {
 				returnVal = true;
 			else
 				returnVal = false;
-			break; 
 
-		}          
+				break; 
+
+			case PlayerStateController.playerStates.firingWeapon:
+				returnVal = true;
+				break;
+
+		}  
+
+
 
 
 
@@ -245,8 +287,14 @@ public class PlayerStateListener : MonoBehaviour {
 			case PlayerStateController.playerStates.landing:				
 				break;
 
+			case PlayerStateController.playerStates.firingWeapon:		
 
-			
+					if(PlayerStateController.stateDelayTimer[ (int)PlayerStateController.playerStates.firingWeapon] > Time.time){
+						returnVal = true;
+					}
+					
+				break;
+
 
 		}
 		
@@ -262,11 +310,20 @@ public class PlayerStateListener : MonoBehaviour {
 		switch (newState) {
 			case PlayerStateController.playerStates.right:
 						rigidbody2D.velocity = new Vector2 (1 * 3.5f, rigidbody2D.velocity.y);						
+						if(localScale.x < 0.0f)
+						{
+							localScale.x *= -1.0f;
+							transform.localScale = localScale;              
+						}
 				break;
 				
 			case PlayerStateController.playerStates.left:		
 						rigidbody2D.velocity = new Vector2 (-1 * 3.5f, rigidbody2D.velocity.y);
-						
+						if(localScale.x > 0.0f)
+						{
+							localScale.x *= -1.0f;
+							transform.localScale  = localScale;
+						}						
 				break;
 		}
 

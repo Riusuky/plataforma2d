@@ -46,6 +46,8 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\PlayerBulletBegginerController.cs" />
+     <Compile Include="Assets\Scripts\PlayerBulletController.cs" />
      <Compile Include="Assets\Scripts\PlayerColliderListener.cs" />
      <Compile Include="Assets\Scripts\PlayerStateController.cs" />
      <Compile Include="Assets\Scripts\PlayerStateListener.cs" />
