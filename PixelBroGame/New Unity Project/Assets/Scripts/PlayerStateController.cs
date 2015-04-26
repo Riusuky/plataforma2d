@@ -8,6 +8,8 @@ public class PlayerStateController : MonoBehaviour {
 		idle = 0,
 		left,
 		right,
+		down,
+		up,
 		jump,
 		landing,
 		falling,
@@ -25,7 +27,21 @@ public class PlayerStateController : MonoBehaviour {
 	void LateUpdate () 
 	{
 
+		float vertical = Input.GetAxis("Vertical");
 		float horizontal = Input.GetAxis("Horizontal");
+
+		if (vertical != 0.0f) {
+			if(vertical < 0.0f){
+				if(onStateChange != null){
+					onStateChange(PlayerStateController.playerStates.down);
+				}
+			}else{
+				if(onStateChange != null){
+					onStateChange(PlayerStateController.playerStates.up);
+				}
+			}
+		}
+
 		if(horizontal != 0.0f)
 		{
 			if(horizontal < 0.0f)
@@ -63,6 +79,8 @@ public class PlayerStateController : MonoBehaviour {
 			if(onStateChange != null)
 				onStateChange(PlayerStateController.playerStates.firingWeapon);
 		}
+
+		//
 
 	}
 

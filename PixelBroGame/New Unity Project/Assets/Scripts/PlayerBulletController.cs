@@ -4,8 +4,10 @@ using System.Collections;
 public class PlayerBulletController : MonoBehaviour {
 
 	public GameObject playerObject = null; // Will be populated automatically when the bullet is created in PlayerStateListener
+	public GameObject bulletExplostionPrefab = null; 
 
 
+	
 	public float bulletSpeed = 20.0f;	
 	private float selfDestructTimer = 0.0f;
 
@@ -16,10 +18,19 @@ public class PlayerBulletController : MonoBehaviour {
 
 		if(selfDestructTimer > 0.0f)
 		{
-			if(selfDestructTimer < Time.time)
+			if(selfDestructTimer < Time.time){
+				//print("antes de destruir criar uma nov inst do bulllet explostion");
+
+				InitExplostionEffect();
 				Destroy(gameObject);
-		}
-	
+			}				
+		}	
+	}
+
+	void InitExplostionEffect(){
+		GameObject newBulletExplosion = (GameObject)Instantiate(bulletExplostionPrefab);
+		newBulletExplosion.transform.position = transform.position;
+		newBulletExplosion.GetComponent<Animator> ().SetInteger("animState",1);
 	}
 	
 	// Update is called once per frame
@@ -45,8 +56,16 @@ public class PlayerBulletController : MonoBehaviour {
 		
 		GetComponent<Rigidbody2D>().velocity = bulletForce;
 		
-		selfDestructTimer = Time.time + 1.0f;
+		selfDestructTimer = Time.time + 0.30f;
 	}
+
+	public void HitSomething(){
+		InitExplostionEffect();
+		Destroy (gameObject);
+	}
+
+
+
 
 
 }

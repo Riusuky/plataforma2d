@@ -6,6 +6,9 @@ public class PlayerBulletBegginerController : MonoBehaviour {
 
 
 	private float selfDestructTimer = 0f;
+	public Transform bulletSpawn;
+
+
 	// Use this for initialization
 
 	void Awake(){
@@ -13,6 +16,9 @@ public class PlayerBulletBegginerController : MonoBehaviour {
 	} 
 
 	void Update () {
+
+		transform.position = bulletSpawn.position;
+
 		if(selfDestructTimer < Time.time) 
 			Destroy(gameObject);
 	}

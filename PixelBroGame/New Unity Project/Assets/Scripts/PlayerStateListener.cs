@@ -10,7 +10,11 @@ public class PlayerStateListener : MonoBehaviour {
 	//bullet
 	public GameObject bulletPrefab = null; 
 	public GameObject bulletInitPrefab = null; 
+	public GameObject bulletExplostionPrefab = null; 
 	public Transform bulletSpawnTransform;
+
+	//ESCADA
+	private bool naEscada = false;
 
 	//JUMP
 	public float playerJumpForceVertical = 500f;
@@ -40,10 +44,7 @@ public class PlayerStateListener : MonoBehaviour {
 		 localScale = transform.localScale;		
 	}
 	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+
 
 	void LateUpdate()
 	{
@@ -53,7 +54,6 @@ public class PlayerStateListener : MonoBehaviour {
 	void onStateCycle()
 	{
 
-
 		transform.localEulerAngles = Vector3.zero;
 
 		switch (currentState) {
@@ -61,30 +61,33 @@ public class PlayerStateListener : MonoBehaviour {
 			case PlayerStateController.playerStates.idle:
 				break;
 				
-			case PlayerStateController.playerStates.left:
-					
+			case PlayerStateController.playerStates.left:					
 					transform.Translate(new Vector3((playerWalkSpeed * -1.0f) * Time.deltaTime, 0.0f, 0.0f));
-					if(localScale.x > 0.0f)
-					{
-						localScale.x *= -1.0f;
+					//if(localScale.x > 0.0f)
+					//{
+						localScale.x = -1.0f;
 						transform.localScale  = localScale;
-					}
-												
+					//}											
 				break;
 				
-			case PlayerStateController.playerStates.right:
-					
+			case PlayerStateController.playerStates.right:						
 					transform.Translate(new Vector3(playerWalkSpeed * Time.deltaTime, 0.0f, 0.0f));				
-					if(localScale.x < 0.0f)
-					{
-						localScale.x *= -1.0f;
+					//if(localScale.x < 0.0f)
+					//{
+						localScale.x = 1.0f;
 						transform.localScale = localScale;              
-					}
+					//}					
+				break;
+
+			case PlayerStateController.playerStates.down:			
+				break;
+
+			case PlayerStateController.playerStates.up:	
+					//transform.Translate(new Vector3(playerWalkSpeed * Time.deltaTime, 0.0f, 0.0f));			
 					
 				break;
 
 			case PlayerStateController.playerStates.firingWeapon:
-
 				break;
 
 		}
@@ -94,15 +97,20 @@ public class PlayerStateListener : MonoBehaviour {
 	public void onStateChange(PlayerStateController.playerStates newState)
 	{
 
+		if (naEscada == true) {
+			if(newState == PlayerStateController.playerStates.jump){
+				return;
+			}
+		}
+
 		//CONDICAO PARA LOOP
 		if(!playerHasLanded){
 			if(!inJumpAction(newState))
 				return;
 		}
-			
 
 		//if(newState == currentState)
-		//			return;
+		//	return;
 
 		if(checkIfAbortOnStateCondition(newState))
 			return;
@@ -114,7 +122,9 @@ public class PlayerStateListener : MonoBehaviour {
 		switch (newState) {
 
 			case PlayerStateController.playerStates.idle:
-				Debug.Log("idle");
+					
+					
+					Debug.Log("idle");					
 					playerAnimator.SetInteger("StatAnim", 0);
 				break;
 				
@@ -124,8 +134,28 @@ public class PlayerStateListener : MonoBehaviour {
 				break;
 				
 			case PlayerStateController.playerStates.right:
-				Debug.Log("right");
+					Debug.Log("right");
 					playerAnimator.SetInteger("StatAnim", 1);
+				break;
+
+			case PlayerStateController.playerStates.up:
+					
+					//playerAnimator.SetInteger("StatAnim", 1);
+					//rigidbody2D.gravityScale = 0;
+					if(naEscada){
+						Debug.Log("up here");
+						transform.Translate(new Vector3(0.0f,(playerWalkSpeed * 1.0f) * Time.deltaTime, 0.0f));
+					}					
+				break;
+
+			case PlayerStateController.playerStates.down:
+					
+					if(naEscada){
+						Debug.Log("down");
+						transform.Translate(new Vector3(0.0f,(playerWalkSpeed * -1.0f) * Time.deltaTime, 0.0f));
+						//playerAnimator.SetInteger("StatAnim", 1);
+					}
+					
 				break;
 
 			case PlayerStateController.playerStates.jump: 
@@ -146,7 +176,7 @@ public class PlayerStateListener : MonoBehaviour {
 					
 					// Apply the actual jump force
 					//rigidbody2D.AddForce(new Vector2(jumpDirection * playerJumpForceHorizontal, playerJumpForceVertical));
-					rigidbody2D.AddForce(new Vector2(0, playerJumpForceVertical));								
+					rigidbody2D.AddForce(new Vector2(0, playerJumpForceVertical));
 					playerHasLanded = false;
 					PlayerStateController.stateDelayTimer[ (int)PlayerStateController.playerStates.jump] = 0f;
 				}
@@ -162,18 +192,16 @@ public class PlayerStateListener : MonoBehaviour {
 			case PlayerStateController.playerStates.firingWeapon:
 					// Make the bullet object
 					GameObject newBullet = (GameObject)Instantiate(bulletPrefab);
-					GameObject newBulletInit = (GameObject)Instantiate(bulletInitPrefab);
-					
-
-
+					GameObject newBulletInit = (GameObject)Instantiate(bulletInitPrefab);					
 					// Setup the bullet’s starting position
 					newBullet.transform.position = bulletSpawnTransform.position;
-					newBulletInit.transform.position = bulletSpawnTransform.position;
-					
-
+					newBulletInit.transform.position = bulletSpawnTransform.position;					
 					PlayerBulletController bullCon = newBullet.GetComponent<PlayerBulletController>();
+					PlayerBulletBegginerController bullBegCon = newBulletInit.GetComponent<PlayerBulletBegginerController>();
 					// Set the player object
-					bullCon.playerObject = gameObject;	
+					bullCon.playerObject   = gameObject;
+					bullCon.bulletExplostionPrefab = bulletExplostionPrefab;
+					bullBegCon.bulletSpawn = bulletSpawnTransform;
 					// Launch the bullet!
 					bullCon.launchBullet();
 					// With the bullet made, set the state of the player back to the current state
@@ -215,6 +243,14 @@ public class PlayerStateListener : MonoBehaviour {
 			returnVal = true;              
 			break;
 
+		case PlayerStateController.playerStates.up:         
+			returnVal = true;              
+			break;
+
+		case PlayerStateController.playerStates.down:         
+			returnVal = true;              
+			break;
+
 
 		case PlayerStateController.playerStates.jump:
 			// The only state that can take over from Jump is landing or kill.
@@ -248,17 +284,7 @@ public class PlayerStateListener : MonoBehaviour {
 				break;
 
 		}  
-
-
-
-
-
-
 		return returnVal;
-
-
-
-
 	}
 
 	bool checkIfAbortOnStateCondition(PlayerStateController.playerStates newState)
@@ -274,6 +300,12 @@ public class PlayerStateListener : MonoBehaviour {
 				break;
 				
 			case PlayerStateController.playerStates.right:
+				break;
+
+			case PlayerStateController.playerStates.up:
+				break;
+
+			case PlayerStateController.playerStates.down:
 				break;
 
 			case PlayerStateController.playerStates.jump:
@@ -294,8 +326,6 @@ public class PlayerStateListener : MonoBehaviour {
 					}
 					
 				break;
-
-
 		}
 		
 		// Value of true means 'Abort'. Value of false means 'Continue'.
@@ -303,10 +333,8 @@ public class PlayerStateListener : MonoBehaviour {
 	}
 
 	bool inJumpAction(PlayerStateController.playerStates newState){
-
 		Vector3 localScale = transform.localScale;		
 		transform.localEulerAngles = Vector3.zero;
-
 		switch (newState) {
 			case PlayerStateController.playerStates.right:
 						rigidbody2D.velocity = new Vector2 (1 * 3.5f, rigidbody2D.velocity.y);						
@@ -326,10 +354,21 @@ public class PlayerStateListener : MonoBehaviour {
 						}						
 				break;
 		}
-
-
 		bool returnVal = true;
 		return returnVal;
+	}
+
+	void EnterEscada(){
+		//print ("EnterEscada");
+		naEscada = true;
+		rigidbody2D.gravityScale = 0;
+
+	}
+
+	void ExitEscada(){
+		//print ("SairEscada");
+		naEscada = false;
+		rigidbody2D.gravityScale = 3;
 	}
 
 

@@ -46,11 +46,20 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\BlocoAtivo.cs" />
+     <Compile Include="Assets\Scripts\BlocoAtivoPartes.cs" />
+     <Compile Include="Assets\Scripts\CameraController.cs" />
+     <Compile Include="Assets\Scripts\EnemyControllerScript.cs" />
+     <Compile Include="Assets\Scripts\EnemyDefence.cs" />
+     <Compile Include="Assets\Scripts\EnemyGuideWatcher.cs" />
+     <Compile Include="Assets\Scripts\EscadaController.cs" />
      <Compile Include="Assets\Scripts\PlayerBulletBegginerController.cs" />
      <Compile Include="Assets\Scripts\PlayerBulletController.cs" />
+     <Compile Include="Assets\Scripts\PlayerBulletExplosionController.cs" />
      <Compile Include="Assets\Scripts\PlayerColliderListener.cs" />
      <Compile Include="Assets\Scripts\PlayerStateController.cs" />
      <Compile Include="Assets\Scripts\PlayerStateListener.cs" />
+     <Compile Include="Assets\Scripts\RandomSprite.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
