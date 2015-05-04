@@ -1,0 +1,171 @@
+fileFormatVersion: 2
+guid: 355791403d48b2747a2d8c83ffdbab88
+TextureImporter:
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 4096
+  textureSettings:
+    filterMode: -1
+    aniso: 1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: Midground_Main
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2306
+        width: 3915
+        height: 1790
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: Midground_Vine_F
+      rect:
+        serializedVersion: 2
+        x: 3122
+        y: 1810
+        width: 926
+        height: 455
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: Midground_CliffSide
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1464
+        width: 1018
+        height: 842
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: Midground_TreeCover
+      rect:
+        serializedVersion: 2
+        x: 1023
+        y: 1581
+        width: 1152
+        height: 724
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: Midground_Vine_B
+      rect:
+        serializedVersion: 2
+        x: 2303
+        y: 1850
+        width: 599
+        height: 455
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: Cloud_02
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1338
+        width: 955
+        height: 189
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: Cloud_03
+      rect:
+        serializedVersion: 2
+        x: 2701
+        y: 1356
+        width: 1347
+        height: 360
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: Cloud_01
+      rect:
+        serializedVersion: 2
+        x: 2034
+        y: 1338
+        width: 526
+        height: 126
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: Cloud_04
+      rect:
+        serializedVersion: 2
+        x: 2360
+        y: 777
+        width: 1736
+        height: 507
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: Background_Cliff
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 724
+        width: 1870
+        height: 557
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: Rock_02
+      rect:
+        serializedVersion: 2
+        x: 3957
+        y: 605
+        width: 34
+        height: 53
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: Foreground_Vine
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 3258
+        height: 602
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: Rock_03
+      rect:
+        serializedVersion: 2
+        x: 3947
+        y: 359
+        width: 55
+        height: 59
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: Rock_01
+      rect:
+        serializedVersion: 2
+        x: 3947
+        y: 101
+        width: 39
+        height: 45
+      alignment: 0
+      pivot: {x: .5, y: .5}
+  spritePackingTag: 
+  userData: 
