@@ -2,7 +2,8 @@
   <MonoDevelop.Ide.Workspace />
   <MonoDevelop.Ide.Workbench ActiveDocument="..\..\digitalT\Assets\Scripts\CharacterMovement.cs">
     <Files>
-      <File FileName="..\..\digitalT\Assets\Scripts\CharacterMovement.cs" Line="38" Column="1" />
+      <File FileName="..\..\digitalT\Assets\Scripts\CharacterMovement.cs" Line="30" Column="41" />
+      <File FileName="..\..\digitalT\Assets\Scripts\BossHealth.cs" Line="18" Column="36" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
